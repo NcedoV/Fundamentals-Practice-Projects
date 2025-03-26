@@ -24,38 +24,40 @@ public class TemperatureConverterApp {
 
         switch (tempUnitSelected) {
             case 1:
-                System.out.print("\nInput temperature convert to " + degSign + "C:  ");
+                System.out.print("\nPlease input temperature to convert to " + degSign + "C:  ");
                 inputTemp = scanner.nextInt();
+
+                int tempInCelsius = (inputTemp - 32)  * 5 / 9;
+                System.out.println(degSign+tempInCelsius);
                 break;
             case 2:
-                System.out.print("\nInput temperature convert to " + degSign + "F:  ");
+                System.out.print("\nPlease input temperature to convert to " + degSign + "F:  ");
                 inputTemp = scanner.nextInt();
+
+                float tempInFahrenheit = (float)inputTemp * (5 / 9) + 32;
+                System.out.println(degSign+tempInFahrenheit);
                 break;
             case 3:
-                System.out.print("\nInput temperature convert to " + degSign + "K:  ");
+                System.out.print("\nPlease input temperature to convert to " + degSign + "K:  ");
                 inputTemp = scanner.nextInt();
+
+                double tempInKelvin = (float) (((inputTemp - 32) * (5 / 9)) + 273.15);
+                System.out.println(degSign+tempInKelvin);
                 break;
             case 4:
-                System.out.print("\nInput temperature convert to " + degSign + "C:  ");
+                System.out.print("\nPlease input temperature to convert to " + degSign + "C:  ");
                 inputTemp = scanner.nextInt();
                 break;
             case 5:
-                System.out.print("\nInput temperature convert to " + degSign + "F:  ");
+                System.out.print("\nPlease input temperature to convert to " + degSign + "F:  ");
                 inputTemp = scanner.nextInt();
                 break;
             case 6:
-                System.out.print("\nInput temperature convert to " + degSign + "K:  ");
+                System.out.print("\nPlease input temperature to convert to " + degSign + "K:  ");
                 inputTemp = scanner.nextInt();
                 break;
             default:
                     System.out.println("Ok, see again next time... GBye!");
-
         }
-
-//        System.out.println(inputTemp);
-
-
-
-
     }
 }
