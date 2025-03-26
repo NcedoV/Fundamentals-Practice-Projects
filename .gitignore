@@ -1,4 +1,71 @@
-### IntelliJ IDEA ###
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# Build output directories
+/target/
+/out/
+/build/
+
+# IDE specific files - IntelliJ
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/vcs.xml
+.idea/jsLibraryMappings.xml
+# Don't ignore .idea/misc.xml (contains project SDK) or .idea/modules.xml (project structure)
+# Keep .idea/encodings.xml, .idea/compiler.xml if needed for team consistency
+
+# If using Maven
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+# .mvn/wrapper/maven-wrapper.jar <--- Consider tracking this if using the wrapper
+
+# If using Gradle
+.gradle
+/build/
+!gradle/wrapper/gradle-wrapper.jar # Usually good to track the wrapper jar
+gradle-app.setting
+
+# If using Eclipse
+.settings/
+.project
+.classpath
+
+# OS generated files #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db### IntelliJ IDEA ###
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
