@@ -4,9 +4,12 @@ import java.util.Scanner;
 
 public class TemperatureConverterApp {
     public static void main(String[] args) {
-        int inputTemp;
-
         Scanner scanner = new Scanner(System.in);
+
+        double selectedTemperatureUnitCombination =0;
+        double userInputSelection = 0;
+        float inputTemp;
+        char degSign = (int)176;
 
         System.out.println("TEMPERATURE CONVERTER");
         System.out.println("---------------------");
@@ -18,11 +21,21 @@ public class TemperatureConverterApp {
         System.out.println("6. Celsius to Kelvin");
         System.out.println("7. Exit");
 
-        System.out.print("\nSelect a conversion type(1/2.../7): ");
-        byte temperatureUnitCombination = scanner.nextByte();
-        char degSign = (int)176;
+        do {
+            System.out.print("\nSelect a conversion type(1/2.../7): ");
+            userInputSelection = scanner.nextByte();
+            if (userInputSelection >= 1 && userInputSelection <=7)
+                break;
+            else
+                System.out.println("Error: Please input a number between 1 and 7.");
+        } while (userInputSelection < 1 || userInputSelection > 7);
 
-        switch (temperatureUnitCombination) {
+//            if (!(userInputSelection == (double)userInputSelection))
+//                System.out.println("Please enter a number value.");
+
+        selectedTemperatureUnitCombination = Math.ceil(userInputSelection);
+
+        switch ((int)selectedTemperatureUnitCombination) {
             case 1:
                 System.out.print("\nPlease input temperature to convert to " + degSign + "C:  ");
                 inputTemp = scanner.nextInt();
@@ -68,5 +81,6 @@ public class TemperatureConverterApp {
             default:
                     System.out.println("Ok, see again next time... GBye!");
         }
+        scanner.close();
     }
 }
