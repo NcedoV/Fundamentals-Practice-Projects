@@ -6,8 +6,8 @@ public class TemperatureConverterApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        double selectedTemperatureUnitCombination =0;
-        double userInputSelection = 0;
+        double selectedTemperatureUnitCombination;
+        double userInputSelection;
         float inputTemp;
         char degSign = (int)176;
 
@@ -29,9 +29,6 @@ public class TemperatureConverterApp {
             else
                 System.out.println("Error: Please input a number between 1 and 7.");
         } while (userInputSelection < 1 || userInputSelection > 7);
-
-//            if (!(userInputSelection == (double)userInputSelection))
-//                System.out.println("Please enter a number value.");
 
         selectedTemperatureUnitCombination = Math.ceil(userInputSelection);
 
