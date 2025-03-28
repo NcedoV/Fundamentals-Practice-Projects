@@ -1,15 +1,17 @@
 package temperatureconverter;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TemperatureConverterApp {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
         double selectedTemperatureUnitCombination;
-        double userInputSelection;
+        String inputSelection;
+        byte userInputSelection =0;
         float inputTemp;
         char degSign = (int)176;
+
+        Scanner scanner = new Scanner(System.in);
 
         System.out.println("TEMPERATURE CONVERTER");
         System.out.println("---------------------");
@@ -23,11 +25,20 @@ public class TemperatureConverterApp {
 
         do {
             System.out.print("\nSelect a conversion type(1/2.../7): ");
-            userInputSelection = scanner.nextByte();
-            if (userInputSelection >= 1 && userInputSelection <=7)
+            inputSelection = scanner.nextLine();
+
+            String numberRegex = "^[-+]?(\\d+(\\.\\d*)?|\\.\\d+)$";
+
+            if (inputSelection.matches(numberRegex)) {
+                userInputSelection = Byte.parseByte(inputSelection);
+            } else
+                System.out.println("Please enter a numeric value.");
+
+            if (userInputSelection >= 1 && userInputSelection <= 7)
                 break;
             else
-                System.out.println("Error: Please input a number between 1 and 7.");
+                System.out.println("Please input a number between 1 and 7.");
+
         } while (userInputSelection < 1 || userInputSelection > 7);
 
         selectedTemperatureUnitCombination = Math.ceil(userInputSelection);
