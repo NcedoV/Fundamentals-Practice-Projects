@@ -1,6 +1,5 @@
 package temperatureconverter;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TemperatureConverterApp {
@@ -32,14 +31,14 @@ public class TemperatureConverterApp {
             if (inputSelection.matches(numberRegex)) {
                 userInputSelection = Byte.parseByte(inputSelection);
             } else
-                System.out.println("Please enter a numeric value.");
+                System.out.println("Error: Please enter a numeric value.");
 
             if (userInputSelection >= 1 && userInputSelection <= 7)
                 break;
             else
-                System.out.println("Please input a number between 1 and 7.");
+                System.out.println("Error: Please input a number between 1 and 7.");
 
-        } while (userInputSelection < 1 || userInputSelection > 7);
+        } while (true); //Replaced the following expression with the boolean "true". Not sure why and how it works. Do some research to explain: (userInputSelection < 1 || userInputSelection > 7)
 
         selectedTemperatureUnitCombination = Math.ceil(userInputSelection);
 
@@ -89,6 +88,7 @@ public class TemperatureConverterApp {
             default:
                     System.out.println("Ok, see again next time... GBye!");
         }
+
         scanner.close();
     }
 }
