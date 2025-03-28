@@ -46,42 +46,42 @@ public class TemperatureConverterApp {
         switch ((int)selectedTemperatureUnitCombination) {
             case 1:
                 System.out.print("\nPlease input temperature to convert to " + degSign + "C:  ");
-                inputTemp = scanner.nextInt();
+                inputTemp = scanner.nextFloat();
 
                 double tempFahrenheitToCelsius = (inputTemp - 32)  * (double)5 / (double)9;
                 System.out.println(String.format("%.2f",tempFahrenheitToCelsius) + (degSign + "C"));
                 break;
             case 2:
                 System.out.print("\nPlease input temperature to convert to " + degSign + "F:  ");
-                inputTemp = scanner.nextInt();
+                inputTemp = scanner.nextFloat();
 
                 double tempCelsiusToFahrenheit = inputTemp * (double)9 / (double)5 + 32;
                 System.out.println(String.format("%.2f",tempCelsiusToFahrenheit) + (degSign + "F"));
                 break;
             case 3:
                 System.out.print("\nPlease input temperature to convert to " + degSign + "K:  ");
-                inputTemp = scanner.nextInt();
+                inputTemp = scanner.nextFloat();
 
                 double tempFahrenheitToKelvin = (inputTemp - 32) * (double)5 / (double)9 + 273.15D;
                 System.out.println(String.format("%.2f",tempFahrenheitToKelvin) + (degSign + "K"));
                 break;
             case 4:
                 System.out.print("\nPlease input temperature to convert to " + degSign + "C:  ");
-                inputTemp = scanner.nextInt();
+                inputTemp = scanner.nextFloat();
 
                 float tempKelvinToCelsius = inputTemp - 273.15F;
                 System.out.println(String.format("%.2f",tempKelvinToCelsius) + (degSign + "C"));
                 break;
             case 5:
                 System.out.print("\nPlease input temperature to convert to " + degSign + "F: ");
-                inputTemp = scanner.nextInt();
+                inputTemp = scanner.nextFloat();
 
                 float tempKelvinToFahrenheit = (inputTemp - 273.15F) * (float)9 / (float)5 + 32;
                 System.out.println(String.format("%.2f",tempKelvinToFahrenheit) + (degSign + "F"));
                 break;
             case 6:
                 System.out.print("\nPlease input temperature to convert to " + degSign + "K: ");
-                inputTemp = scanner.nextInt();
+                inputTemp = scanner.nextFloat();
 
                 float tempCelsiusToKelvin = inputTemp + 273.15F;
                 System.out.println(String.format("%.2f",tempCelsiusToKelvin) + (degSign + "K"));
