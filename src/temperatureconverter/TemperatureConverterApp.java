@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class TemperatureConverterApp {
     public static void main(String[] args) {
         double selectedTemperatureUnitCombination;
-        byte userInputSelection = 0;
+        byte validateUserInputMenuSelection = 0;
         char degSign = (int) 176;
-        String terminateApplication = "Y";
+        String terminateApplication;
 
         Scanner scanner = new Scanner(System.in);
 
@@ -21,21 +21,24 @@ public class TemperatureConverterApp {
         System.out.println("6. Celsius to Kelvin");
         System.out.println("7. Exit");
 
-        while (true) { // The condition to be passed here should be (terminateApplication == "Y")
-            userInputSelection = validateUserInput(scanner, userInputSelection);
+        do { // The condition to be passed here should be (terminateApplication == "Y")
+            validateUserInputMenuSelection = validateUserInput(scanner, validateUserInputMenuSelection);
 
-            selectedTemperatureUnitCombination = Math.ceil(userInputSelection);
+            selectedTemperatureUnitCombination = Math.ceil(validateUserInputMenuSelection);
 
-            selectConversionAndCalculateOutputTemperature((int) selectedTemperatureUnitCombination, degSign, scanner);
+            selectConversionTypeAndCalculateOutputTemperature((int) selectedTemperatureUnitCombination, degSign, scanner);
 
-            System.out.print("Would you like to perfrom another conversion? (Y/N): ");
-            terminateApplication = scanner.nextLine();
+            System.out.print("\nWould you like to perfrom another conversion? (Y/N): ");
+            terminateApplication = scanner.next();
 
-            if (terminateApplication == "Y")
-                break;
-            else
-                terminateApplication = "N";
-        }
+            String continueApplication = terminateApplication;
+
+            if (continueApplication.equals("N")) {
+                System.out.println("\nAll good, see again another time... GBye!");
+            }
+
+        } while (terminateApplication.equals("Y"));
+
     }
 
     private static byte validateUserInput(Scanner scanner, byte userInputSelection) {
@@ -54,7 +57,7 @@ public class TemperatureConverterApp {
         return userInputSelection;
     }
 
-    private static void selectConversionAndCalculateOutputTemperature(int selectedTemperatureUnitCombination, char degSign, Scanner scanner) {
+    private static void selectConversionTypeAndCalculateOutputTemperature(int selectedTemperatureUnitCombination, char degSign, Scanner scanner) {
         float inputTemp;
         switch (selectedTemperatureUnitCombination) {
             case 1:
