@@ -33,9 +33,8 @@ public class TemperatureConverterApp {
 
             String continueApplication = terminateApplication;
 
-            if (continueApplication.equals("N")) {
+            if (continueApplication.equals("N"))
                 System.out.println("\nAll good, see again another time... GBye!");
-            }
 
         } while (terminateApplication.equals("Y"));
 
@@ -118,8 +117,10 @@ public class TemperatureConverterApp {
     private static byte inputIsANumber(String inputSelection, String numberRegex, byte userInputSelection) {
         if (inputSelection.matches(numberRegex)) {
             userInputSelection = Byte.parseByte(inputSelection);
-        } else
+        } else {
+            System.out.println(userInputSelection);
             System.out.println("Error: Please enter a numeric value.");
+        }
         return userInputSelection;
     }
 }
