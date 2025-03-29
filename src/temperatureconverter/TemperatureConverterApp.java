@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class TemperatureConverterApp {
     public static void main(String[] args) {
+        String inputSelection;
         double selectedTemperatureUnitCombination;
         byte validateUserInputMenuSelection = 0;
         char degSign = (int) 176;
@@ -21,20 +22,23 @@ public class TemperatureConverterApp {
         System.out.println("6. Celsius to Kelvin");
         System.out.println("7. Exit");
 
-        do { // The condition to be passed here should be (terminateApplication == "Y")
+        do {
+
             validateUserInputMenuSelection = validateUserInput(scanner, validateUserInputMenuSelection);
 
             selectedTemperatureUnitCombination = Math.ceil(validateUserInputMenuSelection);
 
             selectConversionTypeAndCalculateOutputTemperature((int) selectedTemperatureUnitCombination, degSign, scanner);
 
-            System.out.print("\nWould you like to perfrom another conversion? (Y/N): ");
+            System.out.print("\nWould you like to perform another conversion? (Y/N): ");
             terminateApplication = scanner.next();
 
             String continueApplication = terminateApplication;
 
-            if (continueApplication.equals("N"))
+
+            if (continueApplication.equals("N")) {
                 System.out.println("\nAll good, see again another time... GBye!");
+            }
 
         } while (terminateApplication.equals("Y"));
 
@@ -42,6 +46,7 @@ public class TemperatureConverterApp {
 
     private static byte validateUserInput(Scanner scanner, byte userInputSelection) {
         String inputSelection;
+
         do {
             System.out.print("\nSelect a conversion type(1/2.../7): ");
             inputSelection = scanner.nextLine();
@@ -51,6 +56,8 @@ public class TemperatureConverterApp {
             userInputSelection = inputIsANumber(inputSelection, numberRegex, userInputSelection);
 
             if (inputIsAValidMenuSelection(userInputSelection)) break;
+
+            inputSelection = ""; //Why is this code not being executed?
 
         } while (true); //Replaced the following expression with the boolean "true". Not sure why and how it works. Do some research to explain: (userInputSelection < 1 || userInputSelection > 7)
         return userInputSelection;
