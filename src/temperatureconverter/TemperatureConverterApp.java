@@ -1,12 +1,11 @@
 package temperatureconverter;
 
-import java.lang.reflect.Type;
 import java.util.Scanner;
 
 public class TemperatureConverterApp {
     public static void main(String[] args) {
         byte validateUserInputMenuSelection = 0;
-        char degSign = (int) 176;
+        char degSign = (int) 176; //Temperature degree sign converted into a usable string from ASCII code.
 
         Scanner scanner = new Scanner(System.in);
 
@@ -19,7 +18,7 @@ public class TemperatureConverterApp {
 
         do {
 
-            System.out.println("TEMPERATURE CONVERTER");
+            System.out.println("\n\nTEMPERATURE CONVERTER");
             System.out.println("---------------------");
             System.out.println("1. Fahrenheit to Celsius");
             System.out.println("2. Celsius to Fahrenheit");
@@ -28,7 +27,6 @@ public class TemperatureConverterApp {
             System.out.println("5. Kelvin to Fahrenheit");
             System.out.println("6. Celsius to Kelvin");
             System.out.println("7. Exit");
-
 
             validateUserInputMenuSelection = validateUserInput(scanner, validateUserInputMenuSelection);
 
@@ -60,7 +58,7 @@ public class TemperatureConverterApp {
     private static byte validateUserInput(Scanner scanner, byte userInputSelection) {
         String inputSelection;
 
-        while (true) {
+        do {
             System.out.print("\nSelect a conversion type(1/2.../7): ");
             scanner = new Scanner(System.in);
             inputSelection = scanner.nextLine();
@@ -69,9 +67,7 @@ public class TemperatureConverterApp {
 
             userInputSelection = inputIsANumber(inputSelection, numberRegex, userInputSelection);
 
-            if (inputIsAValidMenuSelection(userInputSelection))
-                break;
-        }
+        } while (!inputIsAValidMenuSelection(userInputSelection));
         return userInputSelection;
     }
 
