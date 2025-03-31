@@ -1,28 +1,34 @@
 package temperatureconverter;
 
+import java.lang.reflect.Type;
 import java.util.Scanner;
 
 public class TemperatureConverterApp {
     public static void main(String[] args) {
-        String inputSelection;
-        double selectedTemperatureUnitCombination;
         byte validateUserInputMenuSelection = 0;
         char degSign = (int) 176;
-        String terminateApplication;
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("TEMPERATURE CONVERTER");
-        System.out.println("---------------------");
-        System.out.println("1. Fahrenheit to Celsius");
-        System.out.println("2. Celsius to Fahrenheit");
-        System.out.println("3. Fahrenheit to Kelvin");
-        System.out.println("4. Kelvin to Celsius");
-        System.out.println("5. Kelvin to Fahrenheit");
-        System.out.println("6. Celsius to Kelvin");
-        System.out.println("7. Exit");
+        convertTemperature(validateUserInputMenuSelection, scanner, degSign);
+    }
+
+    private static void convertTemperature(byte validateUserInputMenuSelection, Scanner scanner, char degSign) {
+        double selectedTemperatureUnitCombination;
+        String runProgramme;
 
         do {
+
+            System.out.println("TEMPERATURE CONVERTER");
+            System.out.println("---------------------");
+            System.out.println("1. Fahrenheit to Celsius");
+            System.out.println("2. Celsius to Fahrenheit");
+            System.out.println("3. Fahrenheit to Kelvin");
+            System.out.println("4. Kelvin to Celsius");
+            System.out.println("5. Kelvin to Fahrenheit");
+            System.out.println("6. Celsius to Kelvin");
+            System.out.println("7. Exit");
+
 
             validateUserInputMenuSelection = validateUserInput(scanner, validateUserInputMenuSelection);
 
@@ -30,36 +36,42 @@ public class TemperatureConverterApp {
 
             selectConversionTypeAndCalculateOutputTemperature((int) selectedTemperatureUnitCombination, degSign, scanner);
 
-            System.out.print("\nWould you like to perform another conversion? (Y/N): ");
-            terminateApplication = scanner.next();
+            runProgramme = reRunProgramme(scanner);
 
-            String continueApplication = terminateApplication;
+        } while (runProgramme.equals("Y"));
 
+    }
 
-            if (continueApplication.equals("N")) {
-                System.out.println("\nAll good, see again another time... GBye!");
-            }
+    private static String reRunProgramme(Scanner scanner) {
+        String terminateApplication;
 
-        } while (terminateApplication.equals("Y"));
+        System.out.print("\nWould you like to perform another conversion? (Y/N): ");
+        terminateApplication = scanner.next();
 
+        String continueApplication = terminateApplication;
+
+        if (continueApplication.equals("N")) {
+            System.out.println("\nAll good, see again another time... GBye!");
+        }
+
+        return terminateApplication;
     }
 
     private static byte validateUserInput(Scanner scanner, byte userInputSelection) {
         String inputSelection;
 
-        do {
+        while (true) {
             System.out.print("\nSelect a conversion type(1/2.../7): ");
+            scanner = new Scanner(System.in);
             inputSelection = scanner.nextLine();
 
             String numberRegex = "^[-+]?(\\d+(\\.\\d*)?|\\.\\d+)$";
 
             userInputSelection = inputIsANumber(inputSelection, numberRegex, userInputSelection);
 
-            if (inputIsAValidMenuSelection(userInputSelection)) break;
-
-            inputSelection = ""; //Why is this code not being executed?
-
-        } while (true); //Replaced the following expression with the boolean "true". Not sure why and how it works. Do some research to explain: (userInputSelection < 1 || userInputSelection > 7)
+            if (inputIsAValidMenuSelection(userInputSelection))
+                break;
+        }
         return userInputSelection;
     }
 
@@ -122,12 +134,14 @@ public class TemperatureConverterApp {
     }
 
     private static byte inputIsANumber(String inputSelection, String numberRegex, byte userInputSelection) {
+
         if (inputSelection.matches(numberRegex)) {
             userInputSelection = Byte.parseByte(inputSelection);
-        } else {
-            System.out.println(userInputSelection);
+        }
+        else {
             System.out.println("Error: Please enter a numeric value.");
         }
+
         return userInputSelection;
     }
 }
