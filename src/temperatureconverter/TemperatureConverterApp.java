@@ -44,13 +44,13 @@ public class TemperatureConverterApp {
         System.out.print("\nWould you like to perform another conversion? (Y/N): ");
         terminateApplication = scanner.next();
 
-        String continueApplication = terminateApplication;
+        String continueApplication = terminateApplication.toUpperCase();
 
         if (continueApplication.equals("N")) {
             System.out.println("\nAll good, see again another time... GBye!");
         }
 
-        return terminateApplication;
+        return continueApplication;
     }
 
     private static byte validateUserInput(Scanner scanner, byte userInputSelection) {
