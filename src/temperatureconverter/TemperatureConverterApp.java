@@ -12,7 +12,7 @@ public class TemperatureConverterApp {
         convertTemperature(validateUserInputMenuSelection, scanner, degSign);
     }
 
-    private static void convertTemperature(byte validateUserInputMenuSelection, Scanner scanner, char degSign) {
+    private static void convertTemperature(double validateUserInputMenuSelection, Scanner scanner, char degSign) {
         double selectedTemperatureUnitCombination;
         String runProgramme;
 
@@ -53,7 +53,7 @@ public class TemperatureConverterApp {
         return continueApplication;
     }
 
-    private static byte validateUserInput(Scanner scanner, byte userInputSelection) {
+    private static double validateUserInput(Scanner scanner, double userInputSelection) {
         String inputSelection;
 
         do {
@@ -116,10 +116,11 @@ public class TemperatureConverterApp {
                 break;
             default:
                 System.out.println("Ok, see again next time... GBye!");
+                break;
         }
     }
 
-    private static boolean inputIsAValidMenuSelection(byte userInputSelection) {
+    private static boolean inputIsAValidMenuSelection(double userInputSelection) {
         if (userInputSelection >= 1 && userInputSelection <= 7)
             return true;
         else
@@ -127,10 +128,10 @@ public class TemperatureConverterApp {
         return false;
     }
 
-    private static byte inputIsANumber(String inputSelection, String numberRegex, byte userInputSelection) {
+    private static double inputIsANumber(String inputSelection, String numberRegex, double userInputSelection) {
 
         if (inputSelection.matches(numberRegex)) {
-            userInputSelection = Byte.parseByte(inputSelection);
+            userInputSelection = Double.parseDouble(inputSelection);
         }
         else {
             System.out.println("Error: Please enter a numeric value.");
